@@ -2,27 +2,85 @@
 <html lang="ur">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RADIUS ACCOUNTS - Pervaiz Baloch</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RADIUS ACCOUNTS - Pervaiz Baloch Marri</title>
 <style>
-body{margin:0;font-family:Arial;background:#eef2f7}
-.header{background:#0b2a4a;color:#fff;padding:20px;text-align:center}
-.box{max-width:1100px;margin:15px auto;padding:10px}
-.form{background:#fff;padding:15px;border-radius:10px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;box-shadow:0 2px 8px #0001}
-.form input, .form button{padding:10px;border-radius:6px;border:1px solid #ccc}
-.form button{background:#0b2a4a;color:#fff;border:none;font-weight:bold}
-.table{background:#fff;border-radius:10px;overflow:auto;margin-top:15px;box-shadow:0 2px 8px #0001}
-.head{padding:12px;background:#0b2a4a;color:#fff;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-table{width:100%;border-collapse:collapse;min-width:500px}
-th,td{padding:10px;border-bottom:1px solid #eee;text-align:left}
-.btn{padding:4px 8px;border:none;border-radius:5px;color:#fff;cursor:pointer}
-.del{background:red}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#eef2f7;color:#222}
+.header{background:#0b2a4a;color:#fff;padding:18px;text-align:center}
+.header h1{margin:0;font-size:22px}
+.header p{margin:4px 0 0;opacity:.9}
+.container{max-width:500px;margin:0 auto;padding:12px}
+.card{background:#fff;border-radius:14px;padding:14px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.card h3{margin:0 0 10px}
+input,select{width:100%;padding:13px;margin-top:8px;border:1px solid #d0d7e3;border-radius:10px;font-size:15px;display:block}
+.btn{width:100%;padding:13px;margin-top:10px;border:none;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer}
+.btn-primary{background:#0b2a4a;color:#fff}
+.btn-danger{background:#ff2d2d;color:#fff;padding:6px 10px;border-radius:6px;width:auto;font-size:13px}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+.stat{background:#fff;padding:10px;border-radius:10px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.06)}
+.stat b{display:block;font-size:18px;color:#0b2a4a}
+.search{position:sticky;top:0;z-index:2}
+.table-wrap{overflow-x:auto;border-radius:10px}
+table{width:100%;border-collapse:collapse;background:#fff;min-width:600px}
+th,td{padding:10px;text-align:left;border-bottom:1px solid #eee;font-size:14px;white-space:nowrap}
+th{background:#0b2a4a;color:#fff}
+@media(max-width:600px){table{min-width:500px} .stats{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<div class="header"><h1>RADIUS ACCOUNTS</h1><p>Secure Save System - Pervaiz Baloch Marri</p></div>
-<div class="box">
-<div class="form">
-<input id="u" placeholder="Username">
-<input id="p" placeholder="Package e.g 10MB">
-<input
+<div class="header"><h1>RADIUS ACCOUNTS</h1><p>Pervaiz Baloch Marri - Internet Service</p></div>
+<div class="container">
+<div class="stats">
+<div class="stat"><b id="total">0</b>Total</div>
+<div class="stat"><b id="active">0</b>Active</div>
+<div class="stat"><b id="exp">0</b>Expired</div>
+</div>
+
+<div class="card">
+<h3>+ Add Customer</h3>
+<input id="username" placeholder="Username">
+<input id="pkg" placeholder="Package e.g 10MB">
+<input id="price" type="number" placeholder="Price">
+<label style="font-size:13px;margin-top:8px;display:block">Start Date</label>
+<input id="sdate" type="date">
+<label style="font-size:13px;margin-top:6px;display:block">Expiry Date</label>
+<input id="edate" type="date">
+<select id="status"><option value="Active">Active</option><option value="Expired">Expired</option></select>
+<button class="btn btn-primary" onclick="addCustomer()">Add Customer</button>
+</div>
+
+<div class="card search">
+<input id="search" placeholder="🔍 Search username..." oninput="render()">
+</div>
+
+<div class="card table-wrap">
+<table>
+<thead><tr><th>User</th><th>Package</th><th>Price</th><th>Expiry</th><th>Status</th><th>Action</th></tr></thead>
+<tbody id="list"></tbody>
+</table>
+</div>
+</div>
+
+<script>
+let customers=JSON.parse(localStorage.getItem('radius_v3')||'[]');
+function save(){localStorage.setItem('radius_v3',JSON.stringify(customers));}
+function addCustomer(){
+let u=username.value.trim(), p=pkg.value.trim(), pr=price.value, sd=sdate.value, ed=edate.value, st=status.value;
+if(!u) return alert('Username likho');
+customers.unshift({id:Date.now(),u,p,pr,sd,ed,st});
+save(); username.value=pkg.value=price.value=''; render();
+}
+function del(id){if(confirm('Delete?')){customers=customers.filter(c=>c.id!=id);save();render();}}
+function render(){
+let q=search.value.toLowerCase();
+let filtered=customers.filter(c=>c.u.toLowerCase().includes(q));
+list.innerHTML=filtered.map(c=>`<tr><td>${c.u}</td><td>${c.p}</td><td>${c.pr}</td><td>${c.ed||'-'}</td><td>${c.st}</td><td><button class='btn-danger' onclick='del(${c.id})'>Del</button></td></tr>`).join('');
+total.innerText=customers.length;
+active.innerText=customers.filter(c=>c.st=='Active').length;
+exp.innerText=customers.filter(c=>c.st=='Expired').length;
+}
+render();
+</script>
+</body>
+</html>
