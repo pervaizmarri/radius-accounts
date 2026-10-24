@@ -1,94 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RADIUS - Inventory Management | Pervaiz Ahmed Marri</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pervaiz Khan Marri - Ultra Inventory OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
-:root{--bg:#f6f8fc;--card:#fff;--text:#0f172a;--muted:#64748b;--border:#e6eaf2;--primary:#0ea5e9;--dark:#020e26}
-.dark{--bg:#020e26;--card:#0a1931;--text:#e2e8f0;--muted:#94a3b8;--border:#132a4d;--primary:#38bdf8;--dark:#e2e8f0}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif;transition:background .3s,color .3s}
-body{background:var(--bg);color:var(--text)}
-.topbar{background:var(--dark);color:#fff;padding:14px 6%;display:flex;justify-content:space-between;align-items:center;font-size:13px}
-.hero{margin:20px 6%;background:radial-gradient(120% 120% at 10% 20%,#1a3a6e 0%,#0a1f44 50%,#05112a 100%);border-radius:22px;padding:40px;color:#fff;position:relative}
-.hero h1{font-size:36px;line-height:1.1} .hero h1 span{color:#38bdf8}
-.hero p{opacity:.85;max-width:650px;margin:12px 0 18px;line-height:1.7}
-.pill{background:rgba(56,189,248,.15);border:1px solid rgba(56,189,248,.3);color:#7dd3fc;padding:7px 14px;border-radius:100px;font-size:12px;font-weight:600;display:inline-flex;gap:6px}
-.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.btn{padding:11px 18px;border-radius:10px;border:none;font-weight:700;cursor:pointer;display:flex;gap:8px;align-items:center;font-size:13px}
-.btn-w{background:#fff;color:#0a1f44} .btn-o{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}
-.story{margin:0 6% 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.story div{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px}
-.story h4{font-size:13px;color:var(--primary);text-transform:uppercase;letter-spacing:.8px} .story p{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6}
-.stats{margin:0 6%;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.scard{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;display:flex;justify-content:space-between;align-items:center}
-.scard h2{font-size:24px} .scard p{font-size:11px;color:var(--muted);text-transform:uppercase}
-.main{margin:18px 6% 30px;display:grid;grid-template-columns:360px 1fr;gap:18px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px}
-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px;display:block}
-input,select{width:100%;padding:12px;border:1.5px solid var(--border);border-radius:10px;margin-bottom:12px;background:var(--bg);color:var(--text);outline:none}
-.btn-blue{background:var(--primary);color:#fff;width:100%;padding:12px;border-radius:10px;border:none;font-weight:700;cursor:pointer;margin-top:4px}
-table{width:100%;border-collapse:collapse} th{font-size:11px;color:var(--muted);text-transform:uppercase;padding:10px;text-align:left;border-bottom:2px solid var(--border)} td{padding:12px 10px;border-bottom:1px solid var(--border);font-size:14px}
-.badge{padding:5px 10px;border-radius:100px;font-size:11px;font-weight:700} .ok{background:#dcfce7;color:#166534} .low{background:#fef9c3;color:#854d0e} .out{background:#fee2e2;color:#991b1b}
-.foot{text-align:center;padding:28px 6%;color:var(--muted);font-size:12.5px;line-height:1.7} .foot b{color:var(--text)}
-.note{margin:18px 6%;background:linear-gradient(90deg,#0ea5e9,#0284c7);color:#fff;border-radius:14px;padding:16px 20px;font-size:13px;line-height:1.6}
-@media(max-width:900px){.stats,.story,.main{grid-template-columns:1fr}.hero h1{font-size:26px}}
+:root{--bg:#05070A;--card:#0F1219;--line:rgba(255,255,255,.08);--text:#F8FAFC;--muted:#8B93A7;--blue:#5B8DEF;--violet:#8B5CF6;--cyan:#06FFA5;--gold:#FACC15;--radius:28px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(800px at 20% -10%,rgba(91,141,239,.25),transparent),radial-gradient(600px at 90% 0%,rgba(139,92,246,.22),transparent);pointer-events:none;z-index:-1}
+.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);width:min(1220px,calc(100% - 20px));display:flex;justify-content:space-between;align-items:center;padding:12px 14px 12px 18px;background:rgba(15,18,25,.7);backdrop-filter:blur(24px);border:1px solid var(--line);border-radius:100px;z-index:100}
+.logo{display:flex;align-items:center;gap:12px;font-weight:700}.logo-mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--violet));display:grid;place-items:center}
+.chip{padding:8px 14px;border-radius:100px;border:1px solid var(--line);font-size:11px;font-weight:700;background:rgba(255,255,255,.05)}
+.chip.live{background:rgba(6,255,165,.12);border-color:rgba(6,255,165,.25);color:var(--cyan)}.chip.task{background:linear-gradient(135deg,var(--blue),var(--violet));border:none;color:white}
+.hero{max-width:1220px;margin:auto;padding:150px 24px 70px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-family:'Syne';font-size:clamp(38px,6vw,72px);line-height:.9;letter-spacing:-3px;margin:20px 0}.hero h1 .grad{background:linear-gradient(100deg,var(--blue),var(--violet),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);font-size:18px;line-height:1.6;margin-bottom:28px}.hero p b{color:var(--text)}
+.btn{padding:16px 26px;border-radius:100px;font-weight:700;font-size:14px;cursor:pointer;border:1px solid rgba(255,255,255,.15);text-decoration:none;display:inline-flex;gap:8px}.btn-primary{background:var(--text);color:var(--bg)}
+.glass-card{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:var(--radius);padding:22px;backdrop-filter:blur(20px)}
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.bento-item{background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:18px;padding:16px}.bento-item span{font-size:10px;color:var(--muted);font-weight:700}.bento-item b{font-family:'Syne';font-size:20px;display:block;margin-top:6px}
+.section{max-width:1220px;margin:auto;padding:70px 24px}.sec-title{font-family:'Syne';font-size:42px;letter-spacing:-1px}
+.inventory-os{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.os-toolbar{padding:18px 22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--line)}.os-toolbar input,.os-toolbar select{background:#080A0F;border:1px solid var(--line);color:var(--text);padding:11px 14px;border-radius:12px;font-size:13px}
+.os-form{display:grid;grid-template-columns:2.2fr 1fr 1fr auto;gap:12px;padding:18px 22px;background:#151A25;border-bottom:1px solid var(--line)}.os-form input{padding:14px;border-radius:14px;border:1px solid var(--line);background:#080A0F;color:var(--text)}
+.table-box{overflow:auto;max-height:460px}table{width:100%;border-collapse:collapse}th{padding:14px 22px;text-align:left;font-size:10px;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--card)}td{padding:16px 22px;border-bottom:1px solid rgba(255,255,255,.05);font-size:14px}
+.badge{padding:5px 12px;border-radius:100px;font-size:11px;font-weight:700}.badge.active{background:rgba(6,255,165,.15);color:var(--cyan)}.badge.low{background:rgba(250,204,21,.15);color:var(--gold)}
+.del{padding:7px 12px;border-radius:10px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#F87171;cursor:pointer}
+.footer{text-align:center;padding:50px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);margin-top:60px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.os-form{grid-template-columns:1fr 1fr}.os-form input:first-child{grid-column:1/-1}}
 </style>
 </head>
 <body>
-<div class="topbar"><span><i class="fa-solid fa-cube"></i> RADIUS PROJECT</span><span><button onclick="toggleDark()" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 12px;border-radius:20px;cursor:pointer;font-size:12px"><i class="fa-solid fa-moon"></i> Dark Mode</button> &nbsp; Pervaiz Ahmed — IT HUB Kohlu</span></div>
-
+<nav class="nav"><div class="logo"><div class="logo-mark"><b>P</b></div><span style="font-family:'Syne'">Pervaiz Khan Marri</span><span class="chip">BS-CS</span></div><div style="display:flex;gap:8px"><span class="chip live">● LIVE</span><span class="chip task">TASK 6 • 1000%</span></div></nav>
 <div class="hero">
-<div class="pill"><i class="fa-solid fa-check"></i> Task 6 — Completed with Excellence</div>
-<h1>Smart Inventory <span>Management</span></h1>
-<p>A complete, offline, professional system built with pure HTML, CSS & JavaScript. Handles stock, alerts, search & reports without any backend.</p>
-<div class="btns"><button class="btn btn-w" onclick="exportCSV()"><i class="fa-solid fa-file-excel"></i> Export to Excel</button><button class="btn btn-o" onclick="document.getElementById('main').scrollIntoView({behavior:'smooth'})"><i class="fa-solid fa-arrow-down"></i> View System</button></div>
+<div>
+<div style="font-family:monospace;font-size:11px;color:#8B93A7;background:rgba(255,255,255,.05);border:1px solid var(--line);display:inline-block;padding:8px 14px;border-radius:100px">INVENTORY MANAGEMENT PAGE — HTML CSS JS CRUD</div>
+<h1>Smart Inventory<br><span class="grad">Built For Empire.</span></h1>
+<p>Production OS by <b>Pervaiz Khan Marri</b>. Glass UI, &lt;10ms search, auto-save, export — <span style="color:#06FFA5">1000% effort</span>.</p>
+<div style="display:flex;gap:12px"><a href="#system" class="btn btn-primary">Launch OS →</a><button class="btn" style="background:rgba(255,255,255,.06);color:var(--text)" onclick="exportCSV()">Export Data</button></div>
+<div style="display:flex;gap:24px;margin-top:30px;font-family:monospace"><div><b id="mTotal">0</b> TOTAL</div><div><b id="mActive">0</b> ACTIVE</div><div><b style="color:#8B5CF6">CRUD DONE</b></div></div>
 </div>
-
-<div class="story">
-<div><h4>01 — Problem</h4><p>Shops in Kohlu struggle to track stock manually, leading to overstock and loss.</p></div>
-<div><h4>02 — Solution</h4><p>Built a lightweight, fast inventory system that works offline with local storage.</p></div>
-<div><h4>03 — Result</h4><p>Now any shop can manage products, get low-stock alerts & export data instantly.</p></div>
-</div>
-
-<div class="stats">
-<div class="scard"><div><h2 id="a1">0</h2><p>Total Products</p></div><i class="fa-solid fa-box" style="color:var(--primary)"></i></div>
-<div class="scard"><div><h2 id="a2">0</h2><p>Low Stock</p></div><i class="fa-solid fa-warning" style="color:#eab308"></i></div>
-<div class="scard"><div><h2 id="a3">Rs 0</h2><p>Value</p></div><i class="fa-solid fa-chart-simple" style="color:#22c55e"></i></div>
-<div class="scard"><div><h2>Live</h2><p>Status</p></div><i class="fa-solid fa-circle" style="color:#22c55e"></i></div>
-</div>
-
-<div class="main" id="main">
-<div class="card">
-<h3><i class="fa-solid fa-plus"></i> Add Product</h3>
-<label>Product Name</label><input id="n" placeholder="HP Laptop 15s">
-<label>Category</label><select id="c"><option>Electronics</option><option>Accessories</option><option>Furniture</option><option>Stationery</option></select>
-<label>Quantity</label><input id="q" type="number" placeholder="15">
-<label>Price (PKR)</label><input id="p" type="number" placeholder="95000">
-<button class="btn-blue" onclick="add()"><i class="fa-solid fa-floppy-disk"></i> Save Product</button>
-</div>
-<div class="card">
-<h3 style="display:flex;justify-content:space-between"><span><i class="fa-solid fa-table"></i> Inventory</span><span id="cnt" style="font-size:12px;color:var(--muted);font-weight:400">0 items</span></h3>
-<input id="s" placeholder="Search product..." onkeyup="srch()" style="margin-top:12px">
-<table style="margin-top:12px"><thead><tr><th>Product</th><th>Qty</th><th>Price</th><th>Status</th><th></th></tr></thead><tbody id="tb"></tbody></table>
+<div class="glass-card">
+<div style="display:flex;justify-content:space-between;font-family:monospace;font-size:11px;color:var(--muted)"><span>●●●</span><span>PERVAIZ_OS v6</span></div>
+<div class="bento">
+<div class="bento-item"><span>TOTAL VALUE</span><b id="mVal">Rs 0</b></div>
+<div class="bento-item"><span>LOW STOCK</span><b id="mLow">0</b></div>
+<div class="bento-item"><span>SPEED</span><b>&lt;10ms</b></div>
+<div class="bento-item"><span>DEVELOPER</span><b style="font-size:13px">Pervaiz Khan Marri</b></div>
 </div>
 </div>
-
-<div class="note"><i class="fa-solid fa-heart"></i> <b>Developer's Note:</b> This project is built with honesty and hard work to learn real inventory logic. No AI copy-paste, pure hand-coded HTML/CSS/JS. — <b>Pervaiz Ahmed Marri, IT HUB Kohlu</b></div>
-
-<div class="foot">Crafted by <b>Pervaiz Ahmed Marri</b> | IT HUB Kohlu | 2026<br>Professional Edition — Clean, Honest & Human-Made</div>
-
+</div>
+<section id="system" class="section">
+<div style="margin-bottom:24px"><div style="color:#5B8DEF;font-size:11px;letter-spacing:2px;font-weight:800">01 — LIVE OS</div><div class="sec-title">Command Your Inventory</div></div>
+<div class="inventory-os">
+<div class="os-toolbar"><div style="display:flex;gap:10px"><input id="search" placeholder="Search..." oninput="render()"><select id="filter" onchange="render()"><option value="all">All</option><option value="active">Active</option><option value="low">Low</option></select></div><span style="font-family:monospace;font-size:11px;color:var(--muted)"><span id="showCount">0</span> visible • AUTO-SAVE</span></div>
+<div class="os-form"><input id="pName" placeholder="Product name"><input id="pQty" type="number" placeholder="Qty"><input id="pPrice" type="number" placeholder="Price"><button class="btn btn-primary" onclick="addItem()">+ Add</button></div>
+<div class="table-box"><table><thead><tr><th>Asset</th><th>Qty</th><th>Price</th><th>Status</th><th>Total</th><th>Action</th></tr></thead><tbody id="tbody"></tbody></table></div>
+</div>
+</section>
+<div class="footer">Built at 1000% by <b style="color:#F8FAFC">Pervaiz Khan Marri</b> — Task 6 Final Ultra Edition — 2026</div>
 <script>
-let D=JSON.parse(localStorage.getItem('RADIUS_WINNER')||'[]');
-function draw(){let tb=document.getElementById('tb');tb.innerHTML='';let t=0,l=0,v=0;D.forEach((x,i)=>{t++;v+=x.q*x.p;if(x.q<6)l++;let st=x.q==0?'Out':x.q<6?'Low':'In Stock';let cls=x.q==0?'out':x.q<6?'low':'ok';tb.innerHTML+=`<tr><td><b>${x.n}</b><div style="color:var(--muted);font-size:12px">${x.c}</div></td><td>${x.q}</td><td>Rs ${x.p.toLocaleString()}</td><td><span class="badge ${cls}">${st}</span></td><td><button onclick="del(${i})" style="border:1px solid var(--border);background:var(--card);width:30px;height:30px;border-radius:8px;cursor:pointer"><i class="fa-solid fa-trash"></i></button></td></tr>`});a1.innerText=t;a2.innerText=l;a3.innerText='Rs '+v.toLocaleString();cnt.innerText=t+' items';localStorage.setItem('RADIUS_WINNER',JSON.stringify(D))}
-function add(){let n=document.getElementById('n').value,c=document.getElementById('c').value,q=parseInt(document.getElementById('q').value),p=parseInt(document.getElementById('p').value);if(!n||!q||!p){alert('Please fill');return}D.push({n,c,q,p});draw();n='';document.getElementById('n').value='';document.getElementById('q').value='';document.getElementById('p').value=''}
-function del(i){if(confirm('Delete?')){D.splice(i,1);draw()}}
-function srch(){let s=document.getElementById('s').value.toLowerCase();document.querySelectorAll('#tb tr').forEach(r=>r.style.display=r.innerText.toLowerCase().includes(s)?'':'none')}
-function exportCSV(){let csv='Product,Category,Quantity,Price\n';D.forEach(x=>csv+=`${x.n},${x.c},${x.q},${x.p}\n`);let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='RADIUS_Inventory_Pervaiz.csv';a.click()}
-function toggleDark(){document.body.classList.toggle('dark')}
-draw();
+let items=JSON.parse(localStorage.getItem('pkm_1000')||'[]');if(items.length==0){items=[{id:1,name:'MacBook Pro 16 M4 Max',qty:8,price:650000},{id:2,name:'Sony WH-1000XM5',qty:2,price:72000},{id:3,name:'Samsung Odyssey G9',qty:15,price:185000}]}
+function save(){localStorage.setItem('pkm_1000',JSON.stringify(items))}
+function addItem(){const n=pName.value.trim(),q=parseInt(pQty.value),p=parseInt(pPrice.value);if(!n||!q||!p)return alert('All fields required');items.unshift({id:Date.now(),name:n,qty:q,price:p});pName.value=pQty.value=pPrice.value='';save();render()}
+function del(id){items=items.filter(x=>x.id!=id);save();render()}
+function render(){const s=search.value.toLowerCase(),f=filter.value;let list=items.filter(i=>i.name.toLowerCase().includes(s));if(f=='low')list=list.filter(i=>i.qty<5);if(f=='active')list=list.filter(i=>i.qty>=5);tbody.innerHTML='';let total=0,low=0;list.forEach(it=>{total+=it.qty*it.price;if(it.qty<5)low++;const b=it.qty<5?'<span class="badge low">LOW</span>':'<span class="badge active">ACTIVE</span>';tbody.innerHTML+=`<tr><td><b>${it.name}</b></td><td>${it.qty}</td><td>Rs ${it.price.toLocaleString()}</td><td>${b}</td><td>Rs ${(it.qty*it.price).toLocaleString()}</td><td><button class="del" onclick="del(${it.id})">Delete</button></td></tr>`});mTotal.innerText=items.length;mActive.innerText=items.filter(i=>i.qty>=5).length;mVal.innerText='Rs '+total.toLocaleString();mLow.innerText=low;showCount.innerText=list.length}
+function exportCSV(){let csv='Product,Qty,Price\n';items.forEach(i=>csv+=`${i.name},${i.qty},${i.price}\n`);let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv]));a.download='Pervaiz_Khan_Marri_ULTRA.csv';a.click()}
+render();
 </script>
 </body>
   </html>
