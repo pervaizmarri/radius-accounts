@@ -3,31 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080d1b">
-  <meta name="description" content="Pervaiz Khan — Web Developer specializing in HTML, CSS, JavaScript and WordPress.">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Pervaiz Khan — Web Developer Portfolio">
   <title>Pervaiz Khan | Web Developer</title>
 
   <style>
     :root {
-      --bg: #080d1b;
-      --card: #111a2d;
-      --text: #f4f7ff;
-      --muted: #a7b3ca;
-      --accent: #58e6c1;
-      --blue: #7c8cff;
-      --border: rgba(255,255,255,.1);
+      --bg: #07111f;
+      --panel: rgba(15, 29, 49, .85);
+      --text: #edf5ff;
+      --muted: #a9bad0;
+      --line: rgba(178, 204, 238, .15);
+      --blue: #65d5ff;
+      --purple: #a78bfa;
+      --green: #7cf0c5;
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+    }
+
+    html {
       scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(ellipse at 12% 5%, rgba(39,120,210,.2), transparent 36%),
+        radial-gradient(ellipse at 88% 22%, rgba(124,58,237,.16), transparent 34%),
+        var(--bg);
       color: var(--text);
       line-height: 1.7;
     }
@@ -38,457 +45,724 @@
     }
 
     .container {
-      width: min(1100px, 90%);
+      width: min(1120px, calc(100% - 36px));
       margin: auto;
     }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(8,13,27,.93);
+      z-index: 10;
+      background: rgba(7,17,31,.92);
+      border-bottom: 1px solid var(--line);
       backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
     }
 
     nav {
-      min-height: 75px;
+      min-height: 72px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 20px;
     }
 
-    .logo {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -.5px;
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 900;
     }
 
-    .logo span {
-      color: var(--accent);
+    .brand span {
+      color: var(--blue);
     }
 
     .nav-links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 22px;
-      list-style: none;
-      font-size: 14px;
+      gap: 23px;
       color: var(--muted);
     }
 
     .nav-links a:hover {
-      color: var(--accent);
+      color: var(--blue);
+    }
+
+    .menu-btn {
+      display: none;
+      padding: 8px 12px;
+      background: var(--panel);
+      color: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
     }
 
     .hero {
-      min-height: 590px;
+      min-height: 620px;
+      padding: 85px 0;
       display: grid;
-      grid-template-columns: 1.4fr .8fr;
+      grid-template-columns: 1.2fr .8fr;
       align-items: center;
-      gap: 50px;
-      padding-top: 75px;
-      padding-bottom: 75px;
+      gap: 45px;
     }
 
     .badge {
       display: inline-block;
-      padding: 7px 14px;
-      border: 1px solid rgba(88,230,193,.35);
-      background: rgba(88,230,193,.08);
-      color: var(--accent);
+      padding: 7px 13px;
       border-radius: 30px;
-      font-size: 13px;
-      margin-bottom: 22px;
+      color: var(--green);
+      border: 1px solid rgba(124,240,197,.25);
+      background: rgba(124,240,197,.06);
+      font-size: .85rem;
     }
 
     h1 {
-      font-size: clamp(40px, 6vw, 68px);
+      font-size: clamp(2.7rem, 6vw, 5rem);
       line-height: 1.12;
       letter-spacing: -2px;
-      margin-bottom: 22px;
+      margin: 22px 0;
     }
 
-    h1 span {
-      color: var(--accent);
+    .gradient {
+      background: linear-gradient(100deg, var(--blue), var(--purple));
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
     }
 
-    .hero p, .section-desc {
+    .hero-copy {
+      max-width: 580px;
       color: var(--muted);
-      max-width: 620px;
-      font-size: 16px;
+      font-size: 1.08rem;
     }
 
-    .buttons {
+    .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 30px;
+      gap: 12px;
+      margin-top: 27px;
     }
 
     .btn {
       display: inline-block;
-      padding: 12px 22px;
-      border-radius: 9px;
-      font-weight: 700;
-      font-size: 14px;
+      padding: 12px 19px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      font-weight: bold;
       transition: .25s;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #07131a;
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
     }
 
     .btn:hover {
       transform: translateY(-3px);
     }
 
+    .btn-primary {
+      background: linear-gradient(110deg, #4bbce8, #8e7cf4);
+      color: #07111f;
+      border: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.04);
+    }
+
     .profile-card {
-      padding: 32px;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      text-align: center;
-      background: linear-gradient(145deg, #17243b, #0d1425);
-      box-shadow: 0 25px 80px rgba(0,0,0,.25);
+      padding: 28px;
+      border-radius: 25px;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, #152b44, #0c1627);
+      box-shadow: 0 25px 65px rgba(0,0,0,.25);
+      animation: float 5s ease-in-out infinite;
     }
 
     .avatar {
-      width: 125px;
-      height: 125px;
+      width: 85px;
+      height: 85px;
       display: grid;
       place-items: center;
-      margin: 0 auto 22px;
-      border-radius: 50%;
-      font-size: 43px;
-      font-weight: 800;
-      color: #07131a;
-      background: linear-gradient(135deg, var(--accent), var(--blue));
-      box-shadow: 0 0 40px rgba(88,230,193,.15);
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      color: #07111f;
+      font-size: 2rem;
+      font-weight: 900;
     }
 
     .profile-card h2 {
-      font-size: 23px;
-      margin-bottom: 5px;
+      margin-top: 18px;
     }
 
-    .profile-card p {
+    .muted {
       color: var(--muted);
-      font-size: 14px;
     }
 
-    .status {
-      display: inline-block;
-      margin-top: 20px;
-      color: var(--accent);
-      font-size: 12px;
+    .code-box {
+      margin-top: 22px;
+      padding: 17px;
+      border-radius: 13px;
+      background: #050d19;
+      border: 1px solid var(--line);
+      font-family: monospace;
+      font-size: .86rem;
+      overflow-wrap: anywhere;
+    }
+
+    .green {
+      color: var(--green);
+    }
+
+    .blue {
+      color: var(--blue);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 12px 5px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--blue);
+    }
+
+    .stat small {
+      color: var(--muted);
     }
 
     section {
-      padding: 85px 0;
-      border-top: 1px solid var(--border);
+      padding: 75px 0;
     }
 
-    .section-heading {
-      font-size: clamp(30px, 4vw, 42px);
-      margin-bottom: 12px;
-      letter-spacing: -1px;
+    .section-kicker {
+      color: var(--blue);
+      font-size: .8rem;
+      letter-spacing: 3px;
+      font-weight: bold;
+      text-transform: uppercase;
     }
 
-    .section-heading span {
-      color: var(--accent);
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-top: 10px;
     }
 
     .section-desc {
-      margin-bottom: 35px;
+      color: var(--muted);
+      margin-top: 12px;
+      max-width: 680px;
+    }
+
+    .section-head {
+      margin-bottom: 30px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
 
-    .card {
+    .about-grid {
+      grid-template-columns: 1.1fr .9fr;
+    }
+
+    .panel {
       padding: 25px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+    }
+
+    .panel h3 {
+      margin-bottom: 12px;
+    }
+
+    .panel p,
+    .panel li {
+      color: var(--muted);
+    }
+
+    .learning-list {
+      list-style: none;
+    }
+
+    .learning-list li {
+      margin: 10px 0;
+    }
+
+    .check {
+      color: var(--green);
+      margin-right: 8px;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .skill-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: var(--panel);
       transition: .25s;
     }
 
-    .card:hover {
+    .skill-card:hover,
+    .project-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(88,230,193,.45);
+      border-color: var(--blue);
     }
 
-    .card .icon {
-      font-size: 29px;
+    .skill-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
       margin-bottom: 15px;
+      border-radius: 12px;
+      color: var(--blue);
+      background: rgba(101,213,255,.1);
+      font-weight: 900;
+      font-size: 1.2rem;
     }
 
-    .card h3 {
-      font-size: 19px;
-      margin-bottom: 10px;
-    }
-
-    .card p {
+    .skill-card p {
       color: var(--muted);
-      font-size: 14px;
+      font-size: .9rem;
+      margin-top: 6px;
     }
 
-    .skills {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+      transition: .25s;
+    }
+
+    .project-art {
+      min-height: 135px;
+      display: grid;
+      place-items: center;
+      font-size: 2.7rem;
+      background: linear-gradient(135deg, #102a43, #191d3d);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-content {
+      padding: 20px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      font-size: .92rem;
+      margin-top: 8px;
+    }
+
+    .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 7px;
+      margin-top: 15px;
     }
 
-    .skill {
-      padding: 11px 17px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      color: #dce6f8;
-      font-size: 14px;
+    .tag {
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: rgba(101,213,255,.1);
+      color: #bdeaff;
+      font-size: .75rem;
     }
 
-    .project-label {
-      display: inline-block;
-      margin-bottom: 12px;
-      font-size: 11px;
-      color: var(--accent);
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .project-note {
+      color: var(--muted);
+      font-size: .85rem;
+      margin-top: 18px;
     }
 
     .contact-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
       padding: 35px;
-      background: linear-gradient(135deg, #14243a, #10182b);
-      border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(101,213,255,.25);
+      background: linear-gradient(115deg, rgba(24,64,91,.65), rgba(40,30,78,.55));
     }
 
     .contact-box p {
       color: var(--muted);
-      margin: 12px 0 20px;
+      margin-top: 12px;
     }
 
     footer {
       padding: 25px 0;
-      text-align: center;
+      border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size: 13px;
-      border-top: 1px solid var(--border);
+      font-size: .9rem;
     }
 
-    @media (max-width: 760px) {
-      nav {
-        padding: 16px 0;
-        align-items: flex-start;
-        flex-direction: column;
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s, transform .7s;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .menu-btn {
+        display: block;
       }
 
       .nav-links {
-        gap: 14px;
-        font-size: 13px;
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 15px;
+        right: 15px;
+        padding: 18px;
+        background: #0c192a;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        flex-direction: column;
+        gap: 12px;
       }
 
-      .hero {
+      .nav-links.open {
+        display: flex;
+      }
+
+      .about-grid,
+      .projects-grid {
         grid-template-columns: 1fr;
-        gap: 35px;
-        padding-top: 55px;
       }
 
-      .profile-card {
-        max-width: 420px;
-        width: 100%;
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .grid {
-        grid-template-columns: 1fr;
+      .contact-box {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
       }
 
-      section {
-        padding: 60px 0;
-      }
-
-      h1 {
-        letter-spacing: -1px;
+      .reveal {
+        opacity: 1;
+        transform: none;
       }
     }
   </style>
 </head>
 
 <body>
-
   <header>
     <nav class="container">
-      <a href="#home" class="logo">PERVAIZ<span>.</span></a>
+      <a class="brand" href="#home">PERVAIZ<span>.</span></a>
 
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <button class="menu-btn" id="menuBtn"
+        aria-expanded="false" aria-controls="navLinks">
+        Menu ☰
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
   </header>
 
   <main>
-    <section class="container hero" id="home">
+    <section class="hero container" id="home">
       <div>
-        <span class="badge">WELCOME TO MY PORTFOLIO</span>
+        <span class="badge">● Learning, Building & Growing</span>
 
-        <h1>Hi, I'm <span>Pervaiz Khan</span></h1>
+        <h1>
+          Hi, I'm <span class="gradient">Pervaiz Khan.</span><br>
+          Web Developer.
+        </h1>
 
-        <p>
-          A passionate Web Developer focused on creating modern,
-          responsive and user-friendly websites. I enjoy learning
-          new technologies and turning creative ideas into digital experiences.
+        <p class="hero-copy">
+          I’m learning to turn ideas into clean, responsive, and useful
+          digital experiences with HTML, CSS, JavaScript, and WordPress.
         </p>
 
-        <div class="buttons">
-          <a href="#projects" class="btn btn-primary">Explore My Projects ↗</a>
-          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Explore My Work ↗</a>
+          <a class="btn btn-secondary" href="#contact">Get in Touch</a>
         </div>
       </div>
 
-      <div class="profile-card">
+      <aside class="profile-card">
         <div class="avatar">PK</div>
+
         <h2>Pervaiz Khan</h2>
-        <p>Web Developer & IT Enthusiast</p>
-        <span class="status">● Learning • Building • Growing</span>
-      </div>
-    </section>
+        <p class="muted">Web Development Student · IT Enthusiast</p>
 
-    <section id="about">
-      <div class="container">
-        <h2 class="section-heading">About <span>Me</span></h2>
-
-        <p class="section-desc">
-          I am interested in web development, modern interface design
-          and practical technology solutions. I have completed a
-          three-month Web Development course at IT Hub, Kohlu,
-          covering HTML, CSS, JavaScript, WordPress and basic computer skills.
-          My goal is to continue improving my abilities by building
-          useful and professional digital projects.
-        </p>
-
-        <div class="grid">
-          <article class="card">
-            <div class="icon">🎯</div>
-            <h3>My Goal</h3>
-            <p>To develop reliable, attractive and user-friendly web experiences.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">💡</div>
-            <h3>My Approach</h3>
-            <p>Learn continuously, solve problems and improve through practice.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">🚀</div>
-            <h3>My Vision</h3>
-            <p>Grow as a developer and create meaningful digital solutions.</p>
-          </article>
+        <div class="code-box">
+          <div>const developer = {</div>
+          <div>&nbsp; name: <span class="green">'Pervaiz Khan'</span>,</div>
+          <div>&nbsp; focus: <span class="green">'Web Development'</span>,</div>
+          <div>&nbsp; skills: [<span class="blue">'HTML'</span>,
+            <span class="blue">'CSS'</span>,
+            <span class="blue">'JS'</span>],</div>
+          <div>&nbsp; mindset: <span class="green">'Keep learning'</span></div>
+          <div>};</div>
         </div>
-      </div>
-    </section>
 
-    <section id="skills">
-      <div class="container">
-        <h2 class="section-heading">My <span>Skills</span></h2>
-
-        <p class="section-desc">
-          Technologies and tools I have studied and practised.
-        </p>
-
-        <div class="skills">
-          <span class="skill">HTML5</span>
-          <span class="skill">CSS3</span>
-          <span class="skill">JavaScript</span>
-          <span class="skill">Responsive Design</span>
-          <span class="skill">WordPress</span>
-          <span class="skill">Basic Computer Skills</span>
-          <span class="skill">GitHub</span>
-          <span class="skill">Web Design</span>
+        <div class="stats">
+          <div class="stat"><strong>HTML</strong><small>Structure</small></div>
+          <div class="stat"><strong>CSS</strong><small>Design</small></div>
+          <div class="stat"><strong>JS</strong><small>Interaction</small></div>
         </div>
-      </div>
+      </aside>
     </section>
 
-    <section id="projects">
-      <div class="container">
-        <h2 class="section-heading">Featured <span>Projects</span></h2>
-
+    <section class="container reveal" id="about">
+      <div class="section-head">
+        <div class="section-kicker">01 / About Me</div>
+        <h2 class="section-title">
+          Curious Mind. <span class="gradient">Practical Skills.</span>
+        </h2>
         <p class="section-desc">
-          A showcase of my web development practice and learning.
+          A short introduction to my learning journey and the kind of
+          developer I’m working to become.
         </p>
-
-        <div class="grid">
-          <article class="card">
-            <span class="project-label">WEB DESIGN</span>
-            <div class="icon">🌐</div>
-            <h3>Personal Portfolio</h3>
-            <p>A responsive portfolio website presenting my profile and skills.</p>
-          </article>
-
-          <article class="card">
-            <span class="project-label">WEB DEVELOPMENT</span>
-            <div class="icon">💻</div>
-            <h3>Modern Web Interfaces</h3>
-            <p>Practice projects focused on clean layouts and responsive design.</p>
-          </article>
-
-          <article class="card">
-            <span class="project-label">COMING NEXT</span>
-            <div class="icon">⚡</div>
-            <h3>JavaScript Projects</h3>
-            <p>Building interactive web features while improving my programming skills.</p>
-          </article>
-        </div>
       </div>
-    </section>
 
-    <section id="contact">
-      <div class="container">
-        <div class="contact-box">
-          <h2 class="section-heading">Let's <span>Connect</span></h2>
-
+      <div class="grid about-grid">
+        <article class="panel">
+          <h3>My Introduction</h3>
           <p>
-            Interested in collaboration, web projects or professional opportunities?
-            Feel free to connect with me through my GitHub profile.
+            I’m Pervaiz Khan, an aspiring web developer interested in
+            creating modern websites that look good and work smoothly on
+            mobile phones, tablets, and computers. I completed a
+            three-month Web Development course at IT Hub, Kohlu, where
+            I studied HTML, CSS, JavaScript, WordPress, and basic computer
+            development.
           </p>
+        </article>
 
-          <a
-            class="btn btn-primary"
-            href="https://github.com/pervaizmarri"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visit My GitHub ↗
-          </a>
+        <article class="panel">
+          <h3>What I’m Learning</h3>
+          <ul class="learning-list">
+            <li><span class="check">✓</span>Building accessible pages with HTML.</li>
+            <li><span class="check">✓</span>Creating responsive layouts with CSS.</li>
+            <li><span class="check">✓</span>Adding interaction with JavaScript.</li>
+            <li><span class="check">✓</span>Publishing projects with GitHub Pages.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="container reveal" id="skills">
+      <div class="section-head">
+        <div class="section-kicker">02 / My Skills</div>
+        <h2 class="section-title">
+          Tools I Use to <span class="gradient">Build for the Web.</span>
+        </h2>
+        <p class="section-desc">
+          Technologies I have studied and am developing through practice.
+        </p>
+      </div>
+
+      <div class="grid skills-grid">
+        <article class="skill-card">
+          <div class="skill-icon">H</div>
+          <h3>HTML5</h3>
+          <p>Page structure, headings, links, images, and forms.</p>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-icon">C</div>
+          <h3>CSS3</h3>
+          <p>Responsive layouts, Flexbox, Grid, animations, and styling.</p>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-icon">JS</div>
+          <h3>JavaScript</h3>
+          <p>DOM interaction, events, simple logic, and dynamic content.</p>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-icon">W</div>
+          <h3>WordPress</h3>
+          <p>Learning to create and manage websites using WordPress.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container reveal" id="projects">
+      <div class="section-head">
+        <div class="section-kicker">03 / Selected Work</div>
+        <h2 class="section-title">
+          Projects & <span class="gradient">Practice.</span>
+        </h2>
+        <p class="section-desc">
+          A showcase of my current work and the types of projects
+          I’m building as I improve my skills.
+        </p>
+      </div>
+
+      <div class="grid projects-grid">
+        <article class="project-card">
+          <div class="project-art">◈</div>
+          <div class="project-content">
+            <h3>Personal Portfolio</h3>
+            <p>A responsive portfolio introducing my skills and learning journey.</p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-art">▤</div>
+          <div class="project-content">
+            <h3>Product Landing Page</h3>
+            <p>A product page concept with features and clear calls to action.</p>
+            <div class="tags">
+              <span class="tag">Responsive UI</span>
+              <span class="tag">CSS</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-art">⌘</div>
+          <div class="project-content">
+            <h3>Inventory UI Concept</h3>
+            <p>A frontend concept for product lists, search, and management features.</p>
+            <div class="tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">CRUD Practice</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="project-note">
+        Note: The second and third cards are concepts until you complete
+        and test those projects. Replace them with real project links when available.
+      </p>
+    </section>
+
+    <section class="container reveal" id="contact">
+      <div class="contact-box">
+        <div>
+          <div class="section-kicker">04 / Contact</div>
+          <h2 class="section-title">
+            Let’s Build <span class="gradient">Something Useful.</span>
+          </h2>
+          <p>
+            I’m continuing to learn, practise, and improve as a web developer.
+            Visit my GitHub profile to explore my code and projects.
+          </p>
         </div>
+
+        <a class="btn btn-primary"
+           href="https://github.com/pervaizmarri"
+           target="_blank" rel="noopener noreferrer">
+          Visit GitHub ↗
+        </a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      © <span id="year"></span> Pervaiz Khan. Built with HTML, CSS & JavaScript.
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Pervaiz Khan. Built with HTML, CSS & JavaScript.</span>
+      <a href="#home">Back to Top ↑</a>
     </div>
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
 
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
-    </html>
+</html>
