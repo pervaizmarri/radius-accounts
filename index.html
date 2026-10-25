@@ -2,787 +2,604 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101426">
-<title>Pervaiz Khan | Marri Inventory</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d1b">
+<meta name="description" content="Pervaiz Khan | IT Developer, Web Designer and Frontend Developer">
+<title>Pervaiz Khan | IT Developer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
+
 :root{
-  --bg:#0b0e19;
-  --panel:#131829;
-  --text:#f5f7ff;
-  --muted:#9aa4bf;
-  --blue:#7c8cff;
-  --cyan:#41e0ca;
+  --bg:#080d1b;
+  --card:#111a2e;
+  --blue:#38bdf8;
   --purple:#a78bfa;
-  --green:#36d6a5;
-  --yellow:#ffd166;
-  --red:#ff7185;
-  --line:rgba(255,255,255,.09);
-  font-family:Arial, sans-serif;
+  --white:#f8fafc;
+  --muted:#a6b3c8;
 }
-*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
 body{
-  margin:0;
-  background:radial-gradient(ellipse at top,#252e62,transparent 45%),var(--bg);
-  color:var(--text);
-  min-height:100vh;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.7;
+  overflow-x:hidden;
 }
-button,input,select{font:inherit}
-button{cursor:pointer}
-.app{max-width:1250px;margin:auto;padding:22px}
-.panel{
-  background:linear-gradient(145deg,#171c2c,#111522);
-  border:1px solid var(--line);
-  border-radius:20px;
-  overflow:hidden;
+
+.container{
+  width:min(1120px,90%);
+  margin:auto;
 }
-.profile{
-  max-width:1200px;
-  margin:20px auto 0;
-  padding:20px;
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(8,13,27,.88);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+nav{
+  min-height:76px;
   display:flex;
   align-items:center;
-  gap:16px;
+  justify-content:space-between;
+  gap:20px;
 }
-.avatar{
-  width:60px;height:60px;
-  border-radius:17px;
-  display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--blue),var(--cyan));
-  color:#0b0e19;
-  font-size:22px;font-weight:bold;
-}
-.profile h2{margin:0 0 7px}
-.profile p{margin:5px 0;color:var(--muted);font-size:13px;line-height:1.7}
-.topbar{
-  display:flex;justify-content:space-between;align-items:center;
-  gap:12px;flex-wrap:wrap;
-  padding:17px 20px;
-  border:1px solid var(--line);
-  border-radius:20px;
-  background:#131829;
-}
-.brand{display:flex;align-items:center;gap:12px}
+
 .logo{
-  width:45px;height:45px;border-radius:14px;
-  display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--blue),var(--purple));
-  font-size:22px;font-weight:bold;
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:-1px;
 }
-.brand h1{font-size:17px;margin:0}
-.brand p{font-size:12px;color:var(--muted);margin:5px 0 0}
-.btn{
-  border:1px solid var(--line);
-  border-radius:11px;
-  padding:11px 15px;
-  background:#ffffff08;color:var(--text);
-  font-weight:bold;
+
+.logo span{color:var(--blue)}
+
+nav ul{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  list-style:none;
 }
-.btn.primary{
-  background:linear-gradient(120deg,#dce3ff,#fff);
-  color:#15192b;border:0;
+
+nav a{
+  text-decoration:none;
+  color:var(--muted);
+  font-size:14px;
+  transition:.3s;
 }
-.btn.accent{
-  background:linear-gradient(120deg,var(--blue),var(--purple));
-  border:0;color:white;
-}
+
+nav a:hover{color:var(--blue)}
+
 .hero{
-  padding:45px 3px 30px;
+  min-height:84vh;
+  display:flex;
+  align-items:center;
+  padding:90px 0;
+  position:relative;
+  background:
+  radial-gradient(ellipse at 80% 30%,rgba(56,189,248,.13),transparent 40%),
+  radial-gradient(ellipse at 15% 80%,rgba(167,139,250,.12),transparent 40%);
+}
+
+.hero-grid{
   display:grid;
   grid-template-columns:1.3fr .7fr;
-  gap:25px;align-items:center;
+  gap:55px;
+  align-items:center;
 }
-.eyebrow{
-  display:inline-block;
-  border:1px solid var(--line);
-  border-radius:30px;
-  padding:9px 13px;
-  color:#b7c1e4;font-size:11px;
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:8px 15px;
+  border:1px solid rgba(56,189,248,.3);
+  background:rgba(56,189,248,.08);
+  border-radius:50px;
+  color:var(--blue);
+  font-size:12px;
+  font-weight:700;
   letter-spacing:1px;
+  margin-bottom:25px;
 }
-.hero h2{
-  font-size:clamp(38px,6vw,70px);
-  line-height:1.05;margin:20px 0;
+
+.dot{
+  width:8px;height:8px;
+  background:#4ade80;
+  border-radius:50%;
+  box-shadow:0 0 12px #4ade80;
 }
-.gradient-text{
-  background:linear-gradient(95deg,#8096ff,#c09aff,#41e0ca);
-  color:transparent;background-clip:text;
+
+h1{
+  font-size:clamp(42px,7vw,76px);
+  line-height:1.08;
+  letter-spacing:-3px;
+  margin-bottom:20px;
 }
-.hero p{color:var(--muted);line-height:1.8}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.hero-card{padding:20px;border:1px solid var(--line);border-radius:22px;background:#ffffff08}
-.card-head{color:var(--muted);margin-bottom:16px}
-.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.mini{padding:16px;border:1px solid var(--line);border-radius:15px;background:#090c15}
-.mini span{display:block;color:var(--muted);font-size:11px}
-.mini strong{display:block;font-size:23px;margin-top:12px;overflow-wrap:anywhere}
-.section-title{margin:22px 0 14px}
-.section-title h3{margin:0;font-size:22px}
-.section-title p{color:var(--muted);font-size:13px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
-.stat{padding:18px;border:1px solid var(--line);border-radius:18px;background:#151a2b;min-width:0}
-.stat-top{font-size:12px;color:var(--muted)}
-.stat strong{display:block;font-size:25px;margin:15px 0 7px;overflow-wrap:anywhere}
-.stat small{color:var(--muted)}
-.workspace{
-  display:grid;
-  grid-template-columns:320px minmax(0,1fr);
-  gap:15px;margin-top:22px;align-items:start;
+
+.gradient{
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
-.panel-head{padding:19px;border-bottom:1px solid var(--line)}
-.panel-head h3{margin:0;font-size:17px}
-.panel-head p{margin:6px 0 0;color:var(--muted);font-size:12px}
-.form{padding:18px;display:grid;gap:13px}
-.field label{display:block;font-size:12px;color:#bdc5dc;margin-bottom:7px}
-.field input,.searchbox input,.toolbar select{
-  width:100%;background:#090c15;
-  border:1px solid var(--line);
-  border-radius:11px;color:var(--text);
-  padding:12px;min-width:0;
+
+.hero p{
+  max-width:590px;
+  color:var(--muted);
+  font-size:16px;
+  margin-bottom:30px;
 }
-.field input::placeholder,.searchbox input::placeholder{color:#65708b}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.form-actions{display:flex;gap:9px}
-.form-actions .btn{flex:1}
-.notice{font-size:11px;color:var(--muted);line-height:1.6;padding:0 18px 18px}
-.toolbar{
-  display:flex;align-items:center;gap:10px;
-  padding:14px;border-bottom:1px solid var(--line);
+
+.buttons{
+  display:flex;
   flex-wrap:wrap;
+  gap:14px;
 }
-.searchbox{flex:1;min-width:160px}
-.toolbar select{width:auto}
-.table-wrap{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:570px;text-align:left}
-thead{background:#0c101c}
-th{font-size:10px;color:var(--muted);padding:14px;text-transform:uppercase}
-td{padding:14px;border-top:1px solid var(--line);font-size:13px}
-.product-name{font-weight:bold;overflow-wrap:anywhere}
-.product-id{font-size:10px;color:var(--muted);margin-top:5px}
-.badge{display:inline-block;padding:6px 9px;border-radius:20px;font-size:10px;font-weight:bold}
-.badge.active{color:var(--green);background:#36d6a51a}
-.badge.low{color:var(--yellow);background:#ffd1661c}
-.badge.out{color:var(--red);background:#ff71851c}
-.row-actions{display:flex;gap:6px}
-.icon-btn{
-  border:1px solid var(--line);background:#ffffff08;
-  color:white;border-radius:8px;width:32px;height:32px;
+
+.btn{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  padding:13px 22px;
+  border-radius:10px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:700;
+  transition:.3s;
 }
-.empty{padding:35px;text-align:center;color:var(--muted)}
-.table-foot{padding:14px;color:var(--muted);font-size:11px;border-top:1px solid var(--line)}
-.footer{padding:25px 3px;color:#8993ad;font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.toast{
-  position:fixed;bottom:20px;left:50%;
-  transform:translateX(-50%);
-  background:white;color:#111;padding:12px 18px;
-  border-radius:12px;display:none;z-index:20;
-  max-width:90%;font-size:13px;font-weight:bold;
+
+.btn-primary{
+  background:linear-gradient(100deg,#38bdf8,#818cf8);
+  color:#08111f;
 }
-.toast.show{display:block}
-@media(max-width:850px){
-  .hero{grid-template-columns:1fr}
-  .workspace{grid-template-columns:1fr}
-  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+.btn-secondary{
+  border:1px solid #334155;
+  color:var(--white);
+  background:rgba(255,255,255,.03);
 }
-@media(max-width:520px){
-  .app{padding:12px}
-  .profile{margin:12px;padding:14px}
-  .hero{padding-top:30px}
-  .hero h2{font-size:42px}
-  .stats{gap:8px}
-  .stat{padding:13px}
-  .stat strong{font-size:21px}
-  .form{padding:14px}
-  .two{grid-template-columns:1fr}
-  .toolbar select{flex:1}
+
+.btn:hover{transform:translateY(-3px)}
+
+.profile-card{
+  position:relative;
+  padding:35px 25px;
+  text-align:center;
+  background:linear-gradient(145deg,#16243c,#0e1527);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:26px;
+  box-shadow:0 25px 80px rgba(0,0,0,.25);
+}
+
+.avatar{
+  width:125px;
+  height:125px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:42px;
+  font-weight:800;
+  color:white;
+  background:linear-gradient(135deg,#38bdf8,#8b5cf6);
+  border:5px solid rgba(255,255,255,.1);
+  box-shadow:0 0 40px rgba(56,189,248,.2);
+}
+
+.profile-card h2{font-size:23px}
+.profile-card .role{color:var(--blue);font-size:13px;margin:5px 0 20px}
+
+.mini-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:20px;
+}
+
+.stat{
+  padding:14px 8px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:12px;
+}
+
+.stat strong{display:block;font-size:19px;color:var(--blue)}
+.stat span{font-size:11px;color:var(--muted)}
+
+section{padding:85px 0}
+
+.section-heading{text-align:center;margin-bottom:45px}
+
+.eyebrow{
+  color:var(--blue);
+  text-transform:uppercase;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.section-heading h2{
+  font-size:clamp(30px,5vw,43px);
+  letter-spacing:-1px;
+  margin:8px 0 10px;
+}
+
+.section-heading p{
+  color:var(--muted);
+  max-width:580px;
+  margin:auto;
+  font-size:14px;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.panel{
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.07);
+  padding:30px;
+  border-radius:18px;
+}
+
+.panel h3{font-size:21px;margin-bottom:14px}
+.panel p{color:var(--muted);font-size:14px}
+
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.skill{
+  padding:25px 20px;
+  border-radius:16px;
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.07);
+  transition:.3s;
+}
+
+.skill:hover{
+  transform:translateY(-5px);
+  border-color:rgba(56,189,248,.45);
+}
+
+.skill-icon{font-size:27px;margin-bottom:12px}
+.skill h3{font-size:17px;margin-bottom:8px}
+.skill p{font-size:13px;color:var(--muted)}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:20px;
+}
+
+.tag{
+  font-size:12px;
+  color:#cbd5e1;
+  padding:7px 11px;
+  border-radius:7px;
+  background:#1b2940;
+  border:1px solid #293952;
+}
+
+.project-card{
+  padding:35px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#111c31,#101628);
+  border:1px solid rgba(56,189,248,.2);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+
+.project-card h3{font-size:23px;margin:8px 0}
+.project-card p{font-size:14px;color:var(--muted);max-width:650px}
+
+.project-label{
+  color:var(--blue);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.contact-box{
+  text-align:center;
+  padding:55px 25px;
+  border:1px solid rgba(56,189,248,.2);
+  border-radius:24px;
+  background:radial-gradient(ellipse at top,rgba(56,189,248,.12),transparent 65%),var(--card);
+}
+
+.contact-box h2{
+  font-size:clamp(28px,5vw,42px);
+  margin-bottom:12px;
+}
+
+.contact-box p{
+  color:var(--muted);
+  max-width:580px;
+  margin:0 auto 25px;
+  font-size:14px;
+}
+
+footer{
+  padding:25px 0;
+  border-top:1px solid rgba(255,255,255,.08);
+  color:var(--muted);
+  font-size:12px;
+  text-align:center;
+}
+
+footer strong{color:var(--blue)}
+
+@media(max-width:760px){
+  nav{padding:15px 0;align-items:flex-start}
+  nav ul{gap:12px;flex-wrap:wrap;justify-content:flex-end}
+  nav a{font-size:12px}
+  .logo{font-size:20px;white-space:nowrap}
+  .hero{min-height:auto;padding:65px 0}
+  .hero-grid{grid-template-columns:1fr;gap:35px}
+  h1{letter-spacing:-2px}
+  .profile-card{max-width:400px;width:100%;margin:auto}
+  section{padding:65px 0}
+  .about-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .project-card{flex-direction:column;align-items:flex-start}
+}
+
+@media(max-width:420px){
+  .container{width:92%}
+  .skills-grid{grid-template-columns:1fr}
+  nav{gap:8px}
+  nav ul{gap:9px}
+  .panel{padding:23px}
+  .project-card{padding:25px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- OWNER PROFILE -->
-<section class="panel profile">
-  <div class="avatar">PK</div>
-  <div>
-    <h2>Pervaiz Khan</h2>
-    <p><strong>Website Owner & Web Developer</strong></p>
-    <p>IT Hub, Kohlu — 3-Month Web Development Course</p>
-    <p>HTML · CSS · JavaScript · WordPress · Basic Computer Development</p>
+<header>
+  <div class="container">
+    <nav>
+      <a href="#home" class="logo" style="text-decoration:none;color:white">
+        PERVAIZ<span>.</span>
+      </a>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+
+    <div>
+      <div class="badge">
+        <span class="dot"></span>
+        IT DEVELOPER & WEB DESIGNER
+      </div>
+
+      <h1>
+        Hi, I'm<br>
+        <span class="gradient">Pervaiz Khan.</span>
+      </h1>
+
+      <p>
+        I am an aspiring IT Developer passionate about modern web design,
+        clean code, and building responsive digital experiences.
+        I enjoy turning creative ideas into attractive and user-friendly websites.
+      </p>
+
+      <div class="buttons">
+        <a class="btn btn-primary" href="#projects">Explore My Work ↗</a>
+        <a class="btn btn-secondary" href="#contact">Get In Touch</a>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="avatar">PK</div>
+      <h2>Pervaiz Khan</h2>
+      <div class="role">IT Developer • Web Designer</div>
+      <p style="font-size:13px">
+        Creating modern, responsive and user-friendly web experiences.
+      </p>
+
+      <div class="mini-stats">
+        <div class="stat">
+          <strong>HTML</strong>
+          <span>Web Structure</span>
+        </div>
+        <div class="stat">
+          <strong>CSS</strong>
+          <span>Modern Design</span>
+        </div>
+        <div class="stat">
+          <strong>JS</strong>
+          <span>Interactivity</span>
+        </div>
+        <div class="stat">
+          <strong>WP</strong>
+          <span>WordPress</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<div class="app">
+<section id="about">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Get To Know Me</span>
+      <h2>About <span class="gradient">Me</span></h2>
+      <p>A motivated learner focused on technology, creativity and continuous growth.</p>
+    </div>
 
-  <!-- HEADER -->
-  <header class="topbar">
-    <div class="brand">
-      <div class="logo">PK</div>
+    <div class="about-grid">
+      <div class="panel">
+        <h3>Who I Am</h3>
+        <p>
+          My name is Pervaiz Khan. I am interested in information technology
+          and web development. I focus on creating attractive website layouts,
+          learning modern tools and improving my technical skills.
+          My goal is to grow as a professional developer and contribute
+          to meaningful digital projects.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3>My Learning Journey</h3>
+        <p>
+          I completed a three-month Web Development course at IT Hub, Kohlu.
+          My training included HTML, CSS, JavaScript, WordPress and basic
+          computer skills. I continue to develop my abilities through practice
+          and hands-on projects.
+        </p>
+        <div class="tags">
+          <span class="tag">Web Development</span>
+          <span class="tag">Creative Thinking</span>
+          <span class="tag">Problem Solving</span>
+          <span class="tag">Continuous Learning</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">What I Do</span>
+      <h2>My <span class="gradient">Skills</span></h2>
+      <p>Technologies and tools I have studied and practiced.</p>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill">
+        <div class="skill-icon">🌐</div>
+        <h3>HTML5</h3>
+        <p>Building structured, accessible web pages.</p>
+      </div>
+
+      <div class="skill">
+        <div class="skill-icon">🎨</div>
+        <h3>CSS3</h3>
+        <p>Creating responsive layouts and modern visual designs.</p>
+      </div>
+
+      <div class="skill">
+        <div class="skill-icon">⚡</div>
+        <h3>JavaScript</h3>
+        <p>Learning interactive features and dynamic web behavior.</p>
+      </div>
+
+      <div class="skill">
+        <div class="skill-icon">📝</div>
+        <h3>WordPress</h3>
+        <p>Creating and managing website content.</p>
+      </div>
+
+      <div class="skill">
+        <div class="skill-icon">💻</div>
+        <h3>Basic Computer Skills</h3>
+        <p>Understanding essential computer operations and tools.</p>
+      </div>
+
+      <div class="skill">
+        <div class="skill-icon">📱</div>
+        <h3>Responsive Design</h3>
+        <p>Designing websites for mobile, tablet and desktop screens.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">My Portfolio</span>
+      <h2>Featured <span class="gradient">Work</span></h2>
+      <p>A space to showcase my web development journey and future projects.</p>
+    </div>
+
+    <div class="project-card">
       <div>
-        <h1>PERVAIZ KHAN • MARRI INVENTORY</h1>
-        <p>Smart Stock Control · Version 1.0</p>
+        <span class="project-label">PORTFOLIO PROJECT</span>
+        <h3>Personal Developer Website</h3>
+        <p>
+          A modern personal portfolio built with HTML and CSS,
+          featuring a responsive layout, professional introduction,
+          technical skills and project sections.
+        </p>
+        <div class="tags">
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">Responsive UI</span>
+        </div>
       </div>
-    </div>
-    <button class="btn" id="exportTop" type="button">Export Backup ↗</button>
-  </header>
 
-  <!-- INTRODUCTION -->
-  <section class="hero">
-    <div>
-      <span class="eyebrow">INVENTORY MANAGEMENT SYSTEM</span>
-      <h2>Manage Your Stock.<br><span class="gradient-text">Control Your Business.</span></h2>
+      <a href="#contact" class="btn btn-primary">Let's Connect ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <span class="eyebrow">Have a Project in Mind?</span>
+      <h2>Let's Build Something <span class="gradient">Great.</span></h2>
       <p>
-        A modern inventory management system built with HTML, CSS and
-        JavaScript. Add products, update stock, search inventory and
-        download reports with ease.
+        I am interested in learning opportunities, web development projects
+        and professional connections. Feel free to get in touch.
       </p>
-      <div class="hero-actions">
-        <button class="btn primary" id="focusForm" type="button">＋ Add Product</button>
-        <button class="btn" id="exportHero" type="button">Download Backup</button>
-      </div>
+      <a
+        class="btn btn-primary"
+        href="https://github.com/"
+        target="_blank"
+        rel="noopener noreferrer">
+        Visit GitHub ↗
+      </a>
     </div>
+  </div>
+</section>
 
-    <aside class="hero-card">
-      <div class="card-head">WORKSPACE OVERVIEW</div>
-      <div class="mini-grid">
-        <div class="mini"><span>Products</span><strong id="heroProducts">0</strong></div>
-        <div class="mini"><span>Stock Units</span><strong id="heroUnits">0</strong></div>
-        <div class="mini"><span>Inventory Value</span><strong id="heroValue">Rs 0</strong></div>
-        <div class="mini"><span>Low Stock</span><strong id="heroLow">0</strong></div>
-      </div>
-    </aside>
-  </section>
+</main>
 
-  <!-- STATISTICS -->
-  <section>
-    <div class="section-title">
-      <h3>Inventory Overview</h3>
-      <p>Statistics update automatically.</p>
-    </div>
-
-    <div class="stats">
-      <article class="stat">
-        <div class="stat-top">Total Inventory Value</div>
-        <strong id="statValue">Rs 0</strong>
-        <small>Quantity × unit price</small>
-      </article>
-      <article class="stat">
-        <div class="stat-top">Total Products</div>
-        <strong id="statProducts">0</strong>
-        <small id="statProductsHint">No products yet</small>
-      </article>
-      <article class="stat">
-        <div class="stat-top">Units in Stock</div>
-        <strong id="statUnits">0</strong>
-        <small>Across all products</small>
-      </article>
-      <article class="stat">
-        <div class="stat-top">Needs Attention</div>
-        <strong id="statLow">0</strong>
-        <small>Low or out of stock</small>
-      </article>
-    </div>
-  </section>
-
-  <!-- MAIN WORKSPACE -->
-  <section class="workspace" id="workspace">
-
-    <!-- ADD PRODUCT FORM -->
-    <aside class="panel" id="formPanel">
-      <div class="panel-head">
-        <h3 id="formTitle">Add a Product</h3>
-        <p>Enter product details below.</p>
-      </div>
-
-      <form class="form" id="productForm">
-        <input type="hidden" id="productId">
-
-        <div class="field">
-          <label for="name">Product Name *</label>
-          <input id="name" required maxlength="100" placeholder="e.g. Keyboard">
-        </div>
-
-        <div class="two">
-          <div class="field">
-            <label for="qty">Quantity *</label>
-            <input id="qty" required type="number" min="0" step="1" placeholder="0">
-          </div>
-          <div class="field">
-            <label for="price">Unit Price (Rs) *</label>
-            <input id="price" required type="number" min="0" step="0.01" placeholder="0.00">
-          </div>
-        </div>
-
-        <div class="two">
-          <div class="field">
-            <label for="category">Category</label>
-            <input id="category" maxlength="60" placeholder="Electronics">
-          </div>
-          <div class="field">
-            <label for="threshold">Low Stock Alert</label>
-            <input id="threshold" type="number" min="0" step="1" value="3">
-          </div>
-        </div>
-
-        <div class="form-actions">
-          <button class="btn accent" id="saveBtn" type="submit">＋ Save Product</button>
-          <button class="btn" id="cancelEdit" type="button" hidden>Cancel</button>
-        </div>
-      </form>
-
-      <p class="notice">
-        Your inventory is saved in this browser on this device.
-        Export a backup regularly to protect your records.
-      </p>
-    </aside>
-
-    <!-- PRODUCT TABLE -->
-    <section class="panel">
-      <div class="panel-head">
-        <h3>Your Inventory</h3>
-        <p id="inventorySub">Search and manage your products.</p>
-      </div>
-
-      <div class="toolbar">
-        <label class="searchbox">
-          <input id="search" type="search" placeholder="Search products..." aria-label="Search products">
-        </label>
-
-        <select id="filter" aria-label="Filter stock">
-          <option value="all">All Stock</option>
-          <option value="active">In Stock</option>
-          <option value="low">Low Stock</option>
-          <option value="out">Out of Stock</option>
-        </select>
-
-        <button class="btn" id="exportTable" type="button">Export CSV</button>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Qty</th>
-              <th>Unit Price</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="productRows"></tbody>
-        </table>
-
-        <div class="empty" id="emptyState" hidden>
-          No products found. Add a product or change your search.
-        </div>
-      </div>
-
-      <div class="table-foot">
-        <span id="visibleCount">0 products shown</span>
-        · Auto-save: <span id="saveState">Ready</span>
-      </div>
-    </section>
-  </section>
-
-  <footer class="footer">
-    <span>© <span id="year"></span> <strong>Pervaiz Khan</strong></span>
-    <span>Built with HTML, CSS & JavaScript</span>
-  </footer>
-</div>
-
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<footer>
+  <div class="container">
+    <p>Designed & Built with care by <strong>Pervaiz Khan</strong></p>
+    <p>© <span id="year"></span> Pervaiz Khan. All Rights Reserved.</p>
+  </div>
+</footer>
 
 <script>
-(() => {
-  'use strict';
-
-  const STORAGE_KEY = 'pervaiz_khan_inventory_v1';
-  const $ = id => document.getElementById(id);
-
-  const money = value => 'Rs ' + Number(value || 0).toLocaleString('en-PK', {
-    maximumFractionDigits: 2
-  });
-
-  const number = value => Number(value || 0).toLocaleString('en-PK');
-
-  const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({
-    '&':'&amp;',
-    '<':'&lt;',
-    '>':'&gt;',
-    '"':'&quot;',
-    "'":'&#39;'
-  }[c]));
-
-  let products = [];
-  let toastTimer;
-
-  function makeId() {
-    return (Date.now().toString(36) + Math.random().toString(36).slice(2,7)).toUpperCase();
-  }
-
-  function load() {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-
-      if (stored !== null) {
-        const parsed = JSON.parse(stored);
-        products = Array.isArray(parsed) ? parsed : [];
-      } else {
-        products = [];
-        save(false);
-      }
-    } catch (error) {
-      products = [];
-      notify('Could not load saved products.');
-    }
-  }
-
-  function save(show = true) {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
-      $('saveState').textContent = 'Saved';
-      if (show) notify('Saved successfully.');
-      return true;
-    } catch (error) {
-      $('saveState').textContent = 'Save failed';
-      notify('Unable to save. Export a backup.');
-      return false;
-    }
-  }
-
-  function status(product) {
-    if (Number(product.qty) <= 0) return ['out', 'Out of Stock'];
-    if (Number(product.qty) <= Number(product.threshold ?? 3)) {
-      return ['low', 'Low Stock'];
-    }
-    return ['active', 'In Stock'];
-  }
-
-  function totals() {
-    return products.reduce((result, product) => {
-      const qty = Number(product.qty) || 0;
-      result.units += qty;
-      result.value += qty * (Number(product.price) || 0);
-
-      if (status(product)[0] !== 'active') result.low++;
-      return result;
-    }, {units:0, value:0, low:0});
-  }
-
-  function render() {
-    const total = totals();
-
-    $('statValue').textContent = money(total.value);
-    $('statProducts').textContent = number(products.length);
-    $('statProductsHint').textContent = products.length
-      ? 'Products tracked'
-      : 'No products yet';
-
-    $('statUnits').textContent = number(total.units);
-    $('statLow').textContent = number(total.low);
-
-    $('heroProducts').textContent = number(products.length);
-    $('heroUnits').textContent = number(total.units);
-    $('heroValue').textContent = money(total.value);
-    $('heroLow').textContent = number(total.low);
-
-    const query = $('search').value.trim().toLowerCase();
-    const filter = $('filter').value;
-
-    const shown = products.filter(product => {
-      const matchesSearch = [
-        product.name,
-        product.category,
-        product.id
-      ].some(value => String(value || '').toLowerCase().includes(query));
-
-      return matchesSearch &&
-        (filter === 'all' || status(product)[0] === filter);
-    });
-
-    $('productRows').innerHTML = shown.map(product => {
-      const [className, label] = status(product);
-
-      return `
-        <tr>
-          <td>
-            <div class="product-name">${escapeHTML(product.name)}</div>
-            <div class="product-id">${escapeHTML(product.category || 'Uncategorized')}</div>
-          </td>
-          <td>${number(product.qty)}</td>
-          <td>${money(product.price)}</td>
-          <td><span class="badge ${className}">${label}</span></td>
-          <td>
-            <div class="row-actions">
-              <button class="icon-btn" type="button"
-                data-edit="${escapeHTML(product.id)}" title="Edit">✎</button>
-              <button class="icon-btn" type="button"
-                data-delete="${escapeHTML(product.id)}" title="Delete">×</button>
-            </div>
-          </td>
-        </tr>`;
-    }).join('');
-
-    $('emptyState').hidden = shown.length > 0;
-
-    $('visibleCount').textContent =
-      `${shown.length} of ${products.length} products shown`;
-
-    $('inventorySub').textContent =
-      `${products.length} products tracked · Auto-save enabled`;
-  }
-
-  function resetForm() {
-    $('productForm').reset();
-    $('productId').value = '';
-    $('threshold').value = 3;
-    $('formTitle').textContent = 'Add a Product';
-    $('saveBtn').textContent = '＋ Save Product';
-    $('cancelEdit').hidden = true;
-  }
-
-  function editProduct(id) {
-    const product = products.find(item => item.id === id);
-    if (!product) return;
-
-    $('productId').value = product.id;
-    $('name').value = product.name;
-    $('qty').value = product.qty;
-    $('price').value = product.price;
-    $('category').value = product.category || '';
-    $('threshold').value = product.threshold ?? 3;
-
-    $('formTitle').textContent = 'Edit Product';
-    $('saveBtn').textContent = '✓ Update Product';
-    $('cancelEdit').hidden = false;
-
-    $('formPanel').scrollIntoView({behavior:'smooth', block:'start'});
-    $('name').focus({preventScroll:true});
-  }
-
-  function notify(message) {
-    const element = $('toast');
-    element.textContent = message;
-    element.classList.add('show');
-
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => {
-      element.classList.remove('show');
-    }, 2500);
-  }
-
-  function downloadFile(filename, content, type) {
-    const blob = new Blob([content], {type});
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
-
-  function exportJSON() {
-    const backup = {
-      app: 'Pervaiz Khan Inventory',
-      version: 1,
-      exportedAt: new Date().toISOString(),
-      products
-    };
-
-    downloadFile(
-      'pervaiz-khan-inventory-backup.json',
-      JSON.stringify(backup, null, 2),
-      'application/json'
-    );
-
-    notify('Backup downloaded.');
-  }
-
-  function exportCSV() {
-    const headers = [
-      'Product ID',
-      'Product Name',
-      'Category',
-      'Quantity',
-      'Unit Price',
-      'Stock Value',
-      'Low Stock Threshold',
-      'Status'
-    ];
-
-    const rows = products.map(product => [
-      product.id,
-      product.name,
-      product.category || '',
-      product.qty,
-      product.price,
-      (Number(product.qty) || 0) * (Number(product.price) || 0),
-      product.threshold ?? 3,
-      status(product)[1]
-    ]);
-
-    const csv = [headers, ...rows].map(row =>
-      row.map(value =>
-        `"${String(value ?? '').replace(/"/g, '""')}"`
-      ).join(',')
-    ).join('\r\n');
-
-    downloadFile(
-      'pervaiz-khan-inventory.csv',
-      '\uFEFF' + csv,
-      'text/csv;charset=utf-8;'
-    );
-
-    notify('CSV report downloaded.');
-  }
-
-  $('productForm').addEventListener('submit', event => {
-    event.preventDefault();
-
-    const name = $('name').value.trim();
-    const qty = Number($('qty').value);
-    const price = Number($('price').value);
-    const threshold = Number($('threshold').value || 0);
-
-    if (
-      !name ||
-      !Number.isInteger(qty) || qty < 0 ||
-      !Number.isFinite(price) || price < 0 ||
-      !Number.isInteger(threshold) || threshold < 0
-    ) {
-      notify('Please enter valid product details.');
-      return;
-    }
-
-    const id = $('productId').value;
-
-    const item = {
-      id: id || makeId(),
-      name,
-      qty,
-      price,
-      category: $('category').value.trim(),
-      threshold
-    };
-
-    if (id) {
-      const index = products.findIndex(product => product.id === id);
-      if (index >= 0) products[index] = item;
-      notify('Product updated.');
-    } else {
-      products.unshift(item);
-      notify('Product added.');
-    }
-
-    save(false);
-    resetForm();
-    render();
-  });
-
-  $('productRows').addEventListener('click', event => {
-    const editButton = event.target.closest('[data-edit]');
-    const deleteButton = event.target.closest('[data-delete]');
-
-    if (editButton) {
-      editProduct(editButton.dataset.edit);
-    }
-
-    if (deleteButton) {
-      const product = products.find(
-        item => item.id === deleteButton.dataset.delete
-      );
-
-      if (product && confirm(`Delete "${product.name}"?`)) {
-        products = products.filter(item => item.id !== product.id);
-
-        save(false);
-        render();
-        notify('Product deleted.');
-
-        if ($('productId').value === product.id) resetForm();
-      }
-    }
-  });
-
-  $('cancelEdit').addEventListener('click', resetForm);
-  $('search').addEventListener('input', render);
-  $('filter').addEventListener('change', render);
-
-  $('exportTop').addEventListener('click', exportJSON);
-  $('exportHero').addEventListener('click', exportJSON);
-  $('exportTable').addEventListener('click', exportCSV);
-
-  $('focusForm').addEventListener('click', () => {
-    $('formPanel').scrollIntoView({behavior:'smooth', block:'start'});
-    setTimeout(() => $('name').focus({preventScroll:true}), 300);
-  });
-
-  $('year').textContent = new Date().getFullYear();
-
-  load();
-  render();
-})();
+document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
 </body>
 </html>
-<!-- ===== Pervaiz Khan Marri - Ultra Modern Design Section - Paste Below ===== -->
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap');
-.pkm-design{max-width:1220px;margin:0 auto;padding:80px 24px 40px;font-family:'Space Grotesk',sans-serif}
-.pkm-design-title{font-family:'Syne';font-size:clamp(32px,5vw,58px);letter-spacing:-2px;line-height:.9;color:#F8FAFC;margin-bottom:14px}
-.pkm-design-title span{background:linear-gradient(100deg,#5B8DEF,#8B5CF6,#06FFA5);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.pkm-design-sub{color:#8B93A7;font-size:18px;max-width:600px;line-height:1.5;margin-bottom:36px}
-.pkm-bento{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:220px 220px;gap:18px}
-.pkm-b{border-radius:28px;padding:22px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));backdrop-filter:blur(20px);transition:.4s}
-.pkm-b:hover{transform:translateY(-6px) scale(1.01);border-color:rgba(255,255,255,.18);box-shadow:0 20px 60px rgba(91,141,239,.15)}
-.pkm-b1{grid-row:span 2;background:radial-gradient(600px at 0% 0%,rgba(91,141,239,.3),transparent),linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
-.pkm-b2{background:radial-gradient(400px at 100% 0%,rgba(139,92,246,.25),transparent),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02))}
-.pkm-b3{background:radial-gradient(400px at 0% 100%,rgba(6,255,165,.2),transparent),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02))}
-.pkm-b4{grid-column:span 2;background:linear-gradient(100deg,rgba(91,141,239,.15),rgba(139,92,246,.15),rgba(6,255,165,.1))}
-.pkm-tag{font-size:10px;letter-spacing:1.5px;font-weight:800;color:#5B8DEF;background:rgba(91,141,239,.12);border:1px solid rgba(91,141,239,.2);padding:6px 12px;border-radius:100px;display:inline-block;margin-bottom:14px}
-.pkm-b h3{font-family:'Syne';font-size:24px;line-height:1.1;margin-bottom:10px;color:white}
-.pkm-b p{color:#8B93A7;font-size:14px;line-height:1.5}
-.pkm-stat{font-family:'Syne';font-size:42px;font-weight:800;margin-top:20px}
-.pkm-icon{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1)}
-@media(max-width:900px){.pkm-bento{grid-template-columns:1fr;grid-template-rows:auto}.pkm-b1{grid-row:auto}.pkm-b4{grid-column:auto}}
-</style>
-
-<section class="pkm-design">
-  <div class="pkm-tag">DESIGNED BY PERVAIZ KHAN MARRI • 2026 ULTRA</div>
-  <h2 class="pkm-design-title">Modern Design<br><span>That Speaks Itself.</span></h2>
-  <p class="pkm-design-sub">This section is built with 100% modern design principles — glassmorphism, bento layout, neon gradients. Added by <b style="color:white">Pervaiz Khan Marri</b> below the inventory system.</p>
-  
-  <div class="pkm-bento">
-    <div class="pkm-b pkm-b1">
-      <div class="pkm-icon">✦</div>
-      <div class="pkm-tag" style="color:#06FFA5;border-color:rgba(6,255,165,.2);background:rgba(6,255,165,.1)">GLASS UI</div>
-      <h3>Glassmorphism<br>Ultra Blur OS</h3>
-      <p>Real backdrop-filter blur with layered gradients. Same tech used by Apple & Stripe dashboards.</p>
-      <div class="pkm-stat" style="color:#5B8DEF">100%</div>
-      <p>Custom — No Template</p>
-    </div>
-    <div class="pkm-b pkm-b2">
-      <div class="pkm-icon">⚡</div>
-      <h3>Speed<br><10ms</h3>
-      <p>Instant search & render engine built in pure JS by Pervaiz.</p>
-    </div>
-    <div class="pkm-b pkm-b3">
-      <div class="pkm-icon">★</div>
-      <h3>BS-CS<br>Project</h3>
-      <p>Task 6 — Inventory Management Page HTML CSS JS CRUD.</p>
-      <div class="pkm-stat" style="font-size:18px;color:#FACC15">Pervaiz Khan Marri</div>
-    </div>
-    <div class="pkm-b pkm-b4">
-      <div class="pkm-icon">◐</div>
-      <h3>Why This Design is Different — It’s Not a Table, It’s an Experience</h3>
-      <p>Hover on cards • Glow effects • Smooth scaling • Every pixel crafted by Pervaiz Khan Marri. This is what modern 2026 design looks like.</p>
-    </div>
-  </div>
-</section>
-<!-- ===== End Design Section ===== -->
